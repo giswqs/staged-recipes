@@ -1,0 +1,47 @@
+{% set name = "geohey" %}
+{% set version = "0.0.6" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/geohey-{{ version }}.tar.gz
+  sha256: 34d698720ca080ccfc89f77f8828c5a6f5e024dfbdf1872b7bb3321aeddf5be6
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+
+requirements:
+  host:
+    - python >=3.8
+    - setuptools >=64
+    - setuptools-scm >=8
+    - pip
+  run:
+    - python >=3.8
+    - ipyleaflet
+    - numpy
+    - pandas
+
+test:
+  imports:
+    - geohey
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://geohey.gishub.org
+  summary: A Python package demo for geospatial analysis
+  description: A python package demo for geospatial
+  license: MIT
+  license_file: LICENSE
+  dev_url: https://github.com/giswqs/geohey
+
+extra:
+  recipe-maintainers:
+    - giswqs
