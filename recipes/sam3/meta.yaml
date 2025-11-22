@@ -25,13 +25,13 @@ requirements:
     - python >={{ python_min }}
     - timm >=1.0.17
     - numpy >=1.26
-    - tqdm 
+    - tqdm
     - ftfy >=6.1.1
-    - regex 
+    - regex
     - iopath >=0.1.10
-    - typing_extensions 
-    - huggingface_hub 
-    - einops 
+    - typing_extensions
+    - huggingface_hub
+    - einops
 
 test:
   imports:
@@ -46,8 +46,8 @@ about:
   home: https://github.com/facebookresearch/sam3
   summary: 'SAM 3: Segment Anything with Concepts'
   description: |
-    SAM 3 is a unified foundation model for promptable segmentation in images and videos. 
-    It can detect, segment, and track objects using text or visual prompts such as points, 
+    SAM 3 is a unified foundation model for promptable segmentation in images and videos.
+    It can detect, segment, and track objects using text or visual prompts such as points,
     boxes, and masks.
   license: SAM
   license_family: OTHER
