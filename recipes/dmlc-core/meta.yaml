@@ -1,0 +1,42 @@
+{% set version = "0.5" %}
+
+package:
+  name: dmlc-core
+  version: {{ version }}
+
+source:
+  url: https://github.com/dmlc/dmlc-core/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: cd97475ae1ecf561a1cb1129552f9889d52b11b3beb4c56e5345d007d5020ece
+  patches:
+    # https://github.com/dmlc/dmlc-core/issues/716
+    - 0001-update-cmake-minimum-version.patch
+
+build:
+  number: 0
+  skip: true  # [win]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
+    - cmake
+    - make  # [unix]
+    - ninja  # [win]
+
+test:
+  commands:
+    - test -f $PREFIX/include/dmlc/base.h  # [unix]
+    - if exist %LIBRARY_PREFIX%\\include\\dmlc\\base.h exit 1  # [win]
+
+about:
+  home: https://github.com/dmlc/dmlc-core
+  summary: "Common bricks library for building scalable and portable distributed machine learning"
+  description: |
+    DMLC-Core is the common bricks library for building scalable and portable distributed machine learning.
+  license: Apache-2.0
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - giswqs
